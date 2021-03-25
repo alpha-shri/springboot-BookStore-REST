@@ -23,10 +23,9 @@ public class BookService {
 		return repository.findById(id).get();
 	}
 	
-	public int saveBookService(List<Book> newBook) {
-		repository.saveAll(newBook);
-		System.out.println("Records updated: " +newBook.size());
-		return newBook.size();
+	public String saveBookService(Book newBook) {
+		repository.save(newBook);
+		return BookConstants.STATUS_SUCCESS;
 	}
 	
 	public String deleteBookByIDService(int id) {

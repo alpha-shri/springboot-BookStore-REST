@@ -3,6 +3,7 @@ package com.alpha.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import com.alpha.models.Book;
 import com.alpha.services.BookService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class BookController {
 	
 	@Autowired
@@ -37,7 +39,7 @@ public class BookController {
 	
 // Save a Book to the Database
 	@PostMapping("/saveBook")
-	public int saveBookHandler(@RequestBody List<Book> book) {
+	public String saveBookHandler(@RequestBody Book book) {
 		System.out.println("saveBookHandler Method BooK: " +book);
 		return service.saveBookService(book);
 	}
